@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AYAN — Futuristic Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+
+<body onload="startVoiceGreeting()">
+    <canvas id="matrixCanvas"></canvas>
+<canvas id="hexCanvas"></canvas>
+<button id="toggleBg" style="position: fixed; top: 20px; right: 20px; z-index: 10;">Toggle Background</button>
+
+     <div class="intro-section">
+         <h1 id="developerName" class="glitch-text"></h1>
+         <p style="color: #ccc; text-align: center; font-family: monospace; margin-top: -20px;">
+             Front-End Developer • JavaScript Expert
+            </p>
+        </div>
+
+<!-- Scroll Down Arrow -->
+<a href="#about" class="scroll-down">
+  ↓
+</a>
+
+
+
+
+  <header class="hero">
+    <h1><span class="glow">AYAN</span></h1>
+    <p class="typed-text">Futuristic Front-End Web Developer</p>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  </header>
+
+ <section id="about" class="about-section">
+  <h2>About Me</h2>
+  <p>Hello! I’m <strong>Ayan Fahad</strong>, a passionate Front-End Web Developer dedicated to crafting engaging, beautiful, and user-friendly websites. With a strong foundation in HTML, CSS, and JavaScript, I enjoy transforming ideas into seamless digital experiences.</p>
+
+  <p>My journey into web development began with curiosity and has grown into a career I’m deeply committed to. I thrive on learning the latest web technologies and constantly improving my skills to deliver innovative solutions that exceed expectations.</p>
+
+  <p>Beyond coding, I love collaborating with teams, understanding user needs, and building responsive, accessible, and fast websites that work flawlessly across all devices. My goal is to bridge the gap between design and functionality, ensuring every project tells a story and drives impact.</p>
+
+  <h3>Skills & Expertise</h3>
+  <ul>
+    <li>HTML5, CSS3, JavaScript (ES6+)</li>
+    <li>Responsive & Mobile-First Design</li>
+    <li>CSS Frameworks: Bootstrap, Tailwind CSS</li>
+    <li>JavaScript Frameworks: React.js, Vue.js (basic knowledge)</li>
+    <li>Version Control with Git & GitHub</li>
+    <li>Performance Optimization & SEO Best Practices</li>
+    <li>UI/UX Principles & Accessibility Standards</li>
+  </ul>
+ <!-- THIS is where the timer will appear -->
+    <p id="experienceTimer" class="exp-timer"></p>
+  <h3>What Drives Me</h3>
+  <p>I believe technology is the future, and good web design shapes how people interact with the digital world. I’m dedicated to making the web more inclusive and enjoyable, one project at a time. When I’m not coding, I enjoy exploring tech blogs, contributing to open-source, and experimenting with new design trends.</p>
+
+  <h3>Hobbies & Interests</h3>
+  <p>Outside of work, I’m passionate about photography, traveling, and reading science fiction novels. These hobbies inspire my creativity and problem-solving skills.</p>
+
+  <h3>Let’s Connect!</h3>
+  <p>If you’re interested in working together or want to learn more, feel free to reach out via my <a href="#contact">contact form</a> or on my <a href="https://www.linkedin.com/in/ayanfahad" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+  
+</section>
+
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>AskVerse Ultra</h3>
+        <p>AI Q&A website with 700+ questions, voice input, and instant replies.</p>
+        <a href="file:///C:/Users/Dell/Downloads/sigma%20web%20development%20course/html%20gig%204/index.html" target="_blank">Open</a>
+      </div>
+      <div class="card">
+        <h3>Movie Mania</h3>
+        <p>Stream and download real trailers & movies with a sleek UI.</p>
+        <a href="file:///C:/Users/Dell/Downloads/sigma%20web%20development%20course/HTML%20Gig%203/index.html" target="_blank">Open</a>
+      </div>
+      <div class="card">
+        <h3>How to Make a Game with Code</h3>
+        <p>A full guide with real demo — teaching game logic using JavaScript.</p>
+        <a href="https://example.com" target="_blank">Open</a>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" name="from_name" placeholder="Your Name" required />
+      <input type="email" name="reply_to" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+
+  <div id="experience-timer" class="text-xl font-mono mt-6 text-lime-400"></div>
+
+<script>
+  function updateExperienceTimer() {
+    const startDate = new Date("2020-06-01"); // Change this to your actual start date
+    const now = new Date();
+    const diff = now - startDate;
+
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+    const months = Math.floor((diff / (1000 * 60 * 60 * 24 * 30)) % 12);
+    const days = Math.floor((diff / (1000 * 60 * 60 * 24)) % 30);
+
+    const timerText = `You've been coding for ${years} years, ${months} months, and ${days} days.`;
+    const timerElement = document.getElementById("experienceTimer");
+    if (timerElement) {
+      timerElement.textContent = timerText;
+    }
+  }
+
+  updateExperienceTimer();
+  setInterval(updateExperienceTimer, 86400000); // update every day
+</script>
+
+
+
+
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    
+(function(){
+    emailjs.init("fYoplXouT34CPxCpe"); // Example: emailjs.init("T7UFk7TpaZ...")
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_0cxr1rw", "template_fgpvt6r", this)
+      .then(function() {
+        document.getElementById("form-status").textContent = "Message sent successfully!";
+      }, function(error) {
+        document.getElementById("form-status").textContent = "Failed to send. Please try again.";
+        console.log(error);
+      });
+  });
+
+ window.addEventListener('DOMContentLoaded', () => {
+    const greeting = new SpeechSynthesisUtterance(
+      "Hello! I’m Ayan Fahad, an expert front-end developer. Welcome to my portfolio website."
+    );
+    greeting.rate = 1;
+    greeting.pitch = 1;
+    greeting.volume = 1;
+    greeting.lang = 'en-US';
+
+    // Speak after 2 seconds
+    setTimeout(() => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.speak(greeting);
+      }
+    }, 2000);
+  });
+
+// Background toggle
+let currentBg = 'matrix';
+
+const matrixCanvas = document.getElementById('matrixCanvas');
+const hexCanvas = document.getElementById('hexCanvas');
+const toggleBtn = document.getElementById('toggleBg');
+
+// Matrix
+const ctxMatrix = matrixCanvas.getContext('2d');
+matrixCanvas.width = window.innerWidth;
+matrixCanvas.height = window.innerHeight;
+
+const letters = "アァイイウエオカキクケコサシスセソ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize = 16;
+const columns = Math.floor(matrixCanvas.width / fontSize);
+const drops = Array(columns).fill(1);
+
+function drawMatrix() {
+  ctxMatrix.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctxMatrix.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+  ctxMatrix.fillStyle = "#0F0";
+  ctxMatrix.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctxMatrix.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
+}
+
+// Hex Grid
+const ctxHex = hexCanvas.getContext('2d');
+hexCanvas.width = window.innerWidth;
+hexCanvas.height = window.innerHeight;
+
+function drawHexGrid() {
+  const w = hexCanvas.width;
+  const h = hexCanvas.height;
+  const hexSize = 25;
+  const hexHeight = Math.sqrt(3) * hexSize;
+  const hexWidth = 2 * hexSize;
+  const vertDist = hexHeight;
+  const horizDist = 3 / 4 * hexWidth;
+
+  ctxHex.clearRect(0, 0, w, h);
+  ctxHex.strokeStyle = "#00ffff";
+  ctxHex.lineWidth = 1;
+
+  for (let y = 0; y < h + hexHeight; y += vertDist) {
+    for (let x = 0; x < w + hexWidth; x += horizDist) {
+      const offsetX = (y / vertDist) % 2 ? horizDist / 2 : 0;
+      drawHexagon(x + offsetX, y);
+    }
+  }
+}
+
+function drawHexagon(x, y) {
+  const size = 25;
+  ctxHex.beginPath();
+  for (let i = 0; i <= 6; i++) {
+    const angle = Math.PI / 3 * i;
+    const px = x + size * Math.cos(angle);
+    const py = y + size * Math.sin(angle);
+    ctxHex.lineTo(px, py);
+  }
+  ctxHex.stroke();
+}
+
+let matrixInterval = setInterval(drawMatrix, 33);
+let hexInterval;
+
+// Toggle background function
+toggleBtn.onclick = () => {
+  if (currentBg === 'matrix') {
+    currentBg = 'hex';
+    matrixCanvas.style.display = 'none';
+    hexCanvas.style.display = 'block';
+    clearInterval(matrixInterval);
+    drawHexGrid();
+    hexInterval = setInterval(drawHexGrid, 1000);
+  } else {
+    currentBg = 'matrix';
+    hexCanvas.style.display = 'none';
+    matrixCanvas.style.display = 'block';
+    clearInterval(hexInterval);
+    matrixInterval = setInterval(drawMatrix, 33);
+  }
+};
+
+// Init state
+matrixCanvas.style.display = 'block';
+hexCanvas.style.display = 'none';
+
+// Responsive
+window.addEventListener('resize', () => {
+  matrixCanvas.width = window.innerWidth;
+  matrixCanvas.height = window.innerHeight;
+  hexCanvas.width = window.innerWidth;
+  hexCanvas.height = window.innerHeight;
+});
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
